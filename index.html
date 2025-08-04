@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return to Tradition - $TRADITION</title>
+    <link rel="icon" type="image/png" href="png.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="time-travel-container">
+            <div class="loading-images-container">
+                <img src="main.png" alt="Tradition" class="loading-image">
+                <img src="pump.png" alt="Pump" class="loading-pump-image">
+            </div>
+            <div class="year-display" id="yearDisplay">2025</div>
+            <div class="travel-text">TRAVELING BACK TO THE ORIGINS...</div>
+            <div class="matrix-rain"></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="glitch-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div id="mainContent" class="main-content-wrapper">
+
+
+        <!-- Section 1: Banner -->
+        <section class="banner-section">
+            <div class="container">
+                <img src="banner.png" alt="Return to Tradition Banner" class="banner-image">
+            </div>
+        </section>
+
+        <!-- Section 2: Main Content -->
+        <section class="main-section">
+            <div class="container">
+                <div class="main-content">
+                    <h1 class="main-title">RETURN TO TRADITION</h1>
+                    <div class="ticker">$TRADITION</div>
+                    
+                    <div class="horizontal-content">
+                        <div class="coin-showcase">
+                            <img src="png.png" alt="$TRADITION Memecoin" class="coin-image" id="coinSpinner" onclick="spinCoin()">
+                            <div class="click-hint">CLICK TO SPIN</div>
+                        </div>
+                        
+                        <button class="buy-button" onclick="window.open('https://pump.fun', '_blank')">
+                            <img src="pump.png" alt="Buy on Pump" class="buy-button-img">
+                        </button>
+                    </div>
+                    
+                    <div class="ca-container">
+                        <label class="ca-label">Contract Address</label>
+                        <div class="ca-box">
+                            <input type="text" id="contractAddress" value="TRADiTiON1234567890ABCDEFGHIJKLMNOP" readonly>
+                            <button class="copy-btn" onclick="copyCA()">COPY</button>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-btn">
+                            <span class="social-icon">𝕏</span>
+                            X
+                        </a>
+                        <a href="#" class="social-btn">
+                            <span class="social-icon">👥</span>
+                            COMMUNITY
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Image Collage -->
+        <section class="collage-section">
+            <div class="container">
+                <div class="collage-content">
+                    <h2 class="collage-title">The Tradition Collection</h2>
+                    <div class="image-collage">
+                        <img src="act1.png" alt="Act1" class="collage-image">
+                        <img src="billy.png" alt="Billy" class="collage-image">
+                        <img src="chillguy.png" alt="Chill Guy" class="collage-image">
+                        <img src="fartcoin.png" alt="Fartcoin" class="collage-image">
+                        <img src="floydai.png" alt="Floyd AI" class="collage-image">
+                        <img src="fwog.png" alt="Fwog" class="collage-image">
+                        <img src="genzquant.png" alt="GenZ Quant" class="collage-image">
+                        <img src="goat.png" alt="Goat" class="collage-image">
+                        <img src="michi.png" alt="Michi" class="collage-image">
+                        <img src="moodeng.png" alt="Moo Deng" class="collage-image">
+                        <img src="niggabutt.png" alt="Niggabutt" class="collage-image">
+                        <img src="pnut.png" alt="Pnut" class="collage-image">
+                        <img src="pwease.png" alt="Pwease" class="collage-image">
+                        <img src="retardio.png" alt="Retardio" class="collage-image">
+                        <img src="sigma.png" alt="Sigma" class="collage-image">
+                        <img src="spinningcat.png" alt="Spinning Cat" class="collage-image">
+                        <img src="stonks.png" alt="Stonks" class="collage-image">
+                        <img src="troll.png" alt="Troll" class="collage-image">
+                        <img src="would.png" alt="Would" class="collage-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <!-- Coin Spinner Result Modal -->
+    <div id="spinResultModal" class="spin-modal">
+        <div class="modal-content">
+            <div class="result-header">YOU GOT:</div>
+            <img id="resultCoinImage" class="result-coin-image" src="" alt="">
+            <div id="resultCoinName" class="result-coin-name"></div>
+            <div class="result-ca-container">
+                <input type="text" id="resultCA" class="result-ca-input" readonly>
+                <button class="result-copy-btn" onclick="copyResultCA()">COPY</button>
+            </div>
+            <button class="close-modal-btn" onclick="closeModal()">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Simple Footer -->
+    <footer class="simple-footer">
+        <div class="container">
+            <p>&copy; 2025 $TRADITION - Return to the Origins</p>
+        </div>
+    </footer>
+
+    <script>
+        const memecoins = [
+            { name: 'MOODENG', ca: 'ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY', image: 'moodeng.png' },
+            { name: 'MICHI', ca: '5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp', image: 'michi.png' },
+            { name: 'RETARDIO', ca: '6ogzHhzdrQr9Pgv6hZ2MNze7UrzBMAFyBBWUYp1Fhitx', image: 'retardio.png' },
+            { name: 'PNUT', ca: '2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump', image: 'pnut.png' },
+            { name: 'CHILLGUY', ca: 'Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump', image: 'chillguy.png' },
+            { name: 'WOULD', ca: 'Hga48QXtpCgLSTsfysDirPJzq8aoBPjvePUgmXhFGDro', image: 'would.png' },
+            { name: 'FARTCOIN', ca: '5Qst7u5qKhRaLGHkH9Mh6HsWe453X3Mj65ZQ3HSDmmAf', image: 'fartcoin.png' }
+        ];
+
+        let isSpinning = false;
+
+        // Loading Screen Animation
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const yearDisplay = document.getElementById('yearDisplay');
+            const progressFill = document.getElementById('progressFill');
+            const mainContent = document.getElementById('mainContent');
+
+            const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+            
+            const startDate = new Date();
+            const endDate = new Date(2024, 0, 1); // January 2024
+
+            let currentDate = new Date(startDate);
+            
+            const totalMonths = (startDate.getFullYear() - endDate.getFullYear()) * 12 + (startDate.getMonth() - endDate.getMonth());
+            const duration = 4000;
+            const intervalTime = totalMonths > 0 ? duration / totalMonths : 0;
+            let monthsPassed = 0;
+
+            function updateDisplay() {
+                if (currentDate >= endDate) {
+                    yearDisplay.textContent = `${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+                    
+                    monthsPassed++;
+                    const progress = totalMonths > 0 ? (monthsPassed / (totalMonths + 1)) * 100 : 100;
+                    progressFill.style.width = `${progress}%`;
+
+                    // Dynamic color change - from turquoise to green
+                    const greenProgress = monthsPassed / (totalMonths + 1);
+                    const red = Math.floor(64 * (1 - greenProgress)); // 64 is the red component of turquoise (#40e0d0)
+                    const green = Math.floor(224 + (31 * greenProgress)); // 224 is green in turquoise, 255 is full green
+                    const blue = Math.floor(208 * (1 - greenProgress)); // 208 is blue in turquoise, fades to 0
+                    
+                    loadingScreen.style.background = `rgb(${red}, ${green}, ${blue})`;
+
+                    currentDate.setMonth(currentDate.getMonth() - 1);
+                    setTimeout(updateDisplay, intervalTime);
+                } else {
+                    yearDisplay.textContent = 'JANUARY 2024 - THE ORIGINS';
+                    progressFill.style.width = '100%';
+                    loadingScreen.style.background = '#00FF00'; // Final green color
+                    
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        loadingScreen.style.visibility = 'hidden';
+                        mainContent.classList.add('loaded');
+                    }, 1000);
+                }
+            }
+
+            if (intervalTime > 0) {
+                updateDisplay();
+            } else {
+                yearDisplay.textContent = 'JANUARY 2024 - THE ORIGINS';
+                progressFill.style.width = '100%';
+                loadingScreen.style.background = '#00FF00';
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.visibility = 'hidden';
+                    mainContent.classList.add('loaded');
+                }, 1000);
+            }
+        });
+
+        function spinCoin() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            const coinImage = document.getElementById('coinSpinner');
+            const clickHint = document.querySelector('.click-hint');
+            
+            clickHint.style.opacity = '0';
+            coinImage.classList.add('spinning');
+            
+            setTimeout(() => {
+                coinImage.classList.remove('spinning');
+                const randomCoin = memecoins[Math.floor(Math.random() * memecoins.length)];
+                showSpinResult(randomCoin);
+                isSpinning = false;
+                clickHint.style.opacity = '1';
+            }, 5000);
+        }
+
+        function showSpinResult(coin) {
+            const modal = document.getElementById('spinResultModal');
+            const resultImage = document.getElementById('resultCoinImage');
+            const resultName = document.getElementById('resultCoinName');
+            const resultCA = document.getElementById('resultCA');
+            
+            resultImage.src = coin.image;
+            resultName.textContent = coin.name;
+            resultCA.value = coin.ca;
+            
+            modal.style.display = 'flex';
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('spinResultModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        function copyCA() {
+            const caInput = document.getElementById('contractAddress');
+            caInput.select();
+            caInput.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(caInput.value);
+            
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = 'COPIED!';
+            copyBtn.style.background = '#00ff00';
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        }
+
+        function copyResultCA() {
+            const caInput = document.getElementById('resultCA');
+            caInput.select();
+            caInput.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(caInput.value);
+            
+            const copyBtn = document.querySelector('.result-copy-btn');
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = 'COPIED!';
+            copyBtn.style.background = '#00ff00';
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
